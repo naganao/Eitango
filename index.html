@@ -4,13 +4,15 @@
   <meta charset="utf-8">
   <title>Eitango</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="jquery.xdomainajax.js"></script>
 </head>
 <body>
   test
   <script>
   $.ajax({
     method: 'get',
-    url: "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite?Dic=EJdict&Word=dict&Scope=HEADWORD&Match=STARTWITH&Merge=AND&Prof=XHTML&PageSize=20&PageIndex=0"
+    //url: "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite?Dic=EJdict&Word=dict&Scope=HEADWORD&Match=STARTWITH&Merge=AND&Prof=XHTML&PageSize=20&PageIndex=0"
+    url:"https://www.yahoo.co.jp/"
   })
   .done(response => {
     console.log(response);
