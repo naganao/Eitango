@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Eitango</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="js/jquery.xdomainajax.js"></script>
+</head>
+<body>
+  test
+  <div id="result">
+  </div>
+  <script>
+    function getQuery() { // クエリを処理する
+      var vars = [], max = 0, hash = "", array = "";
+      var url = window.location.search;
+
+      //?を取り除くため、1から始める。複数のクエリ文字列に対応するため、&で区切る
+      hash  = url.slice(1).split('&');
+      max = hash.length;
+      for (var i = 0; i < max; i++) {
+        array = hash[i].split('=');    //keyと値に分割。
+        vars.push(array[0]);    //末尾にクエリ文字列のkeyを挿入。
+        vars[array[0]] = array[1];    //先ほど確保したkeyに、値を代入。
+      }
+
+      return vars;
+    }
+
+    $(document).ready(function() {
+
+      const query = getQuery();
+      console.log(query.word);
+      $('#result').append(query.word);
+
+      $.ajax({
+        type: 'GET',
+        dataType:'xml',
+        // url: "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite?Dic=EJdict&Word=" + query.word + "&Scope=HEADWORD&Match=EXACT&Merge=AND&Prof=XHTML&PageSize=20&PageIndex=0",
+        url:"http://public.dejizo.jp/NetDicV09.asmx/GetDicItemLite?Dic=EJdict&Item=" + query.itemid + "&Loc=&Prof=XHTML",
+        // url:"https://www.yahoo.co.jp/",
+
+        success: function(xml) {
+          $('#result').append($(xml.responseText).find(".NetDicHead"));
+          $('#result').append($(xml.responseText).find(".NetDicBody"));
+          let keyword = $.trim($(xml.responseText).find(".NetDicHead").text());
+          $.ajax({
+            type: 'GET',
+            // dataType: 'json',
+            // url: "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite?Dic=EJdict&Word=" + query.word + "&Scope=HEADWORD&Match=EXACT&Merge=AND&Prof=XHTML&PageSize=20&PageIndex=0",
+            url: "https://api.flickr.com/services/rest?method=flickr.photos.search&per_page=10&text=" + keyword + "&tags=" + keyword + "&api_key=aab9c9cae6664a07ecc5b04af3b4b731&format=json&nojsoncallback=?",
+            // url:"https://www.yahoo.co.jp/",
+
+            success: function(json) {
+              let data = JSON.parse($(json.responseText).text());
+              // $('#result').append($(json.responseText).find("photos").text());
+              // $('#result').append($(json.responseText).text());
+              // console.log("https://api.flickr.com/services/rest?method=flickr.photos.search&per_page=10&text=" + keyword + "&tags=" + keyword + "&api_key=aab9c9cae6664a07ecc5b04af3b4b731&format=json&nojsoncallback=?");
+              console.log(JSON.parse($(json.responseText).text()));
+              console.log(data.photos.photo);
+
+              for(let i = 0; i < data.photos.photo.length; i++) {
+                let url = "https://farm" + data.photos.photo[i].farm + ".staticflickr.com/"+ data.photos.photo[i].server +"/" + data.photos.photo[i].id + "_"+ data.photos.photo[i].secret +".jpg";
+                console.log(url);
+                $('#result').append('<img src="' + url + '" width="128" height="128">');
+              }
+
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+              console.log("error");
+            }
+          });
+        }
+      });
+      // function setWord(){
+      //   const query = getQuery();
+      //   console.log(query);
+      //   $('#result').append(query);
+      // }
+    });
+  </script>
+</body>
+</html>

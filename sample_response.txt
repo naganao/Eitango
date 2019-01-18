@@ -1,0 +1,248 @@
+"<html>
+  <head>
+    <title>&#13;
+        </title>
+  </head>
+  <body>
+    &#13;
+
+    <searchdicitemresult xsd="http://www.w3.org/2001/XMLSchema" xsi="http://www.w3.org/2001/XMLSchema-instance">
+      &#13;
+  
+      <errormessage>
+        &#13;
+  
+        <totalhitcount>11</totalhitcount>
+        &#13;
+  
+        <itemcount>11</itemcount>
+        &#13;
+  
+        <titlelist>
+          &#13;
+    
+          <dicitemtitle>
+            &#13;
+      
+            <itemid>011348</itemid>
+            &#13;
+      
+            <locid>
+              &#13;
+      
+              <span class="NetDicTitle">dict.</span>
+              &#13;
+      
+              &#13;
+    
+            </locid>
+          </dicitemtitle>
+          &#13;
+    
+          <dicitemtitle>
+            &#13;
+      
+            <itemid>011349</itemid>
+            &#13;
+      
+            <locid>
+              &#13;
+      
+              &#13;
+        
+              <span class="NetDicTitle">dicta</span>
+              &#13;
+      
+              &#13;
+    
+            </locid>
+          </dicitemtitle>
+          &#13;
+    
+          <dicitemtitle>
+            &#13;
+      
+            <itemid>011350</itemid>
+            &#13;
+      
+            <locid>
+              &#13;
+      
+              &#13;
+        
+              <span class="NetDicTitle">Dictaphone</span>
+              &#13;
+      
+              &#13;
+    
+            </locid>
+          </dicitemtitle>
+          &#13;
+    
+          <dicitemtitle>
+            &#13;
+      
+            <itemid>011351</itemid>
+            &#13;
+      
+            <locid>
+              &#13;
+      
+              &#13;
+        
+              <span class="NetDicTitle">dictate</span>
+              &#13;
+      
+              &#13;
+    
+            </locid>
+          </dicitemtitle>
+          &#13;
+    
+          <dicitemtitle>
+            &#13;
+      
+            <itemid>011352</itemid>
+            &#13;
+      
+            <locid>
+              &#13;
+      
+              &#13;
+        
+              <span class="NetDicTitle">dictation</span>
+              &#13;
+      
+              &#13;
+    
+            </locid>
+          </dicitemtitle>
+          &#13;
+    
+          <dicitemtitle>
+            &#13;
+      
+            <itemid>011353</itemid>
+            &#13;
+      
+            <locid>
+              &#13;
+      
+              &#13;
+        
+              <span class="NetDicTitle">dictator</span>
+              &#13;
+      
+              &#13;
+    
+            </locid>
+          </dicitemtitle>
+          &#13;
+    
+          <dicitemtitle>
+            &#13;
+      
+            <itemid>011354</itemid>
+            &#13;
+      
+            <locid>
+              &#13;
+      
+              &#13;
+        
+              <span class="NetDicTitle">dictatorial</span>
+              &#13;
+      
+              &#13;
+    
+            </locid>
+          </dicitemtitle>
+          &#13;
+    
+          <dicitemtitle>
+            &#13;
+      
+            <itemid>011355</itemid>
+            &#13;
+      
+            <locid>
+              &#13;
+      
+              &#13;
+        
+              <span class="NetDicTitle">dictatorship</span>
+              &#13;
+      
+              &#13;
+    
+            </locid>
+          </dicitemtitle>
+          &#13;
+    
+          <dicitemtitle>
+            &#13;
+      
+            <itemid>011356</itemid>
+            &#13;
+      
+            <locid>
+              &#13;
+      
+              &#13;
+        
+              <span class="NetDicTitle">diction</span>
+              &#13;
+      
+              &#13;
+    
+            </locid>
+          </dicitemtitle>
+          &#13;
+    
+          <dicitemtitle>
+            &#13;
+      
+            <itemid>011357</itemid>
+            &#13;
+      
+            <locid>
+              &#13;
+      
+              &#13;
+        
+              <span class="NetDicTitle">dictionary</span>
+              &#13;
+      
+              &#13;
+    
+            </locid>
+          </dicitemtitle>
+          &#13;
+    
+          <dicitemtitle>
+            &#13;
+      
+            <itemid>011358</itemid>
+            &#13;
+      
+            <locid>
+              &#13;
+      
+              &#13;
+        
+              <span class="NetDicTitle">dictum</span>
+              &#13;
+      
+              &#13;
+    
+            </locid>
+          </dicitemtitle>
+          &#13;
+  
+        </titlelist>
+        &#13;
+
+      </errormessage>
+    </searchdicitemresult>
+  </body>
+</html>"

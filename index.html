@@ -4,19 +4,94 @@
   <meta charset="utf-8">
   <title>Eitango</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="jquery.xdomainajax.js"></script>
+  <script src="js/jquery.xdomainajax.js"></script>
 </head>
 <body>
   test
+  <div id="search_form">
+    <form>
+      <p>
+        検索単語：<input type="text" id="search_word" size="40" maxlength="50">
+      </p>
+      <p>
+        <input type="button" value="検索" id="search">
+      </p>
+    </form>
+  </div>
+  <div id="result">
+  </div>
   <script>
+
+  $('#search').on('click', function() {
+    let search_word = $('#search_word').val();
+    console.log(search_word);
   $.ajax({
-    method: 'get',
-    //url: "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite?Dic=EJdict&Word=dict&Scope=HEADWORD&Match=STARTWITH&Merge=AND&Prof=XHTML&PageSize=20&PageIndex=0"
-    url:"https://www.yahoo.co.jp/"
-  })
-  .done(response => {
-    console.log(response);
-  })
+    type: 'GET',
+    dataType:'xml',
+    url: "http://public.dejizo.jp/NetDicV09.asmx/SearchDicItemLite?Dic=EJdict&Word=" + search_word + "&Scope=HEADWORD&Match=STARTWITH&Merge=AND&Prof=XHTML&PageSize=20&PageIndex=0",
+    // url:"https://www.yahoo.co.jp/",
+
+    success: function(xml) {
+        console.log(xml);
+        // console.log(xml.responseText);
+        console.log($($.parseXML(xml.responseText)));
+        console.log($(xml.responseText).find("totalhitcount").text());
+        console.log($($.parseXML(xml.responseText)).find("dicitemtitle").text());
+        var htmlstr = '<ul>';
+        $(xml.responseText).find("dicitemtitle").each(function() {
+            var itemid = $(this).find("itemid").text();
+            var word = $.trim($(this).find("locid").text());
+            console.log($.trim(word));
+            htmlstr += '<li><a href="word.html?word=' + word + '&itemid=' + itemid + '">' + word + '</a></li>';
+        });
+        htmlstr += '</ul>';
+        $('#result').html(htmlstr);
+        $('#result').append($($.parseXML(xml)).text());
+    }
+  });
+
+  // .done(response => {
+  //   console.log(response);
+  //   console.log(response.responseText);
+  //   console.log($(response.results[0]).find("Body"));
+  //   var xmlDoc = $.parseXML(response.results[0]);
+  //   $('#result').append($(response.results[0].responseText).text());//insert
+  //   // console.log($.parseXML(response));
+  //   // var xmlDoc = $.parseXML(response);
+  //   // console.log($(response.results[0]).find("DicItemTitle"));
+  //   $('#result').append($(response.results[0]).find("Body").text());
+  //   // $('#result').append($($.parseXML(response.results[0])).find("ErrorMessage").text());
+  //   console.log($($.parseXML(response)));
+  //   console.log(xmlDoc);
+  //   // console.log($("#document"));
+  //   var data = $(xmlDoc).find("Title");
+  //   console.log("data: ", data);
+  // //  $('#result').append($(xmlDoc).find("result").find("TitleList").text());
+  //   // $('#result').append($.parseXML(response.results[0]));
+  //   console.log($(response.results[0].responseText).text());
+  //
+  //   // var htmlstr = '<ul>';
+  //   // console.log($(response.results).find("DicItemTitle"));
+  //   // $(response.results).find("DicItemTitle").each(function() {
+  //   //     var id = $(this).find("ItemID").text();
+  //   //     var title = $(this).find("Title").text();
+  //   //     htmlstr += '<li><a href="javascript:getWord(\''+id+'\');">'+title+'</li>';
+  //   // });
+  //   // htmlstr += '</ul>';
+  //   // console.log($(htmlstr));
+  //   // $('body').append(htmlstr);
+  //
+  // });
+//   $.ajax({
+//     url: 'https://yahoo.co.jp/',
+//     type: 'GET',
+//     success: function(data) {
+//       console.log(data);
+//         // content = $($(data.responseText).text());
+//         // $('body').append(content);
+//     }
+// });
+});
   </script>
 </body>
 </html>
